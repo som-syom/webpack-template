@@ -23,10 +23,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [
           "style-loader", // html 에서 css 를 사용할 수 있도록 스타일 로더를 사용함
           "css-loader", // js 파일에서 css 파일을 사용할 수 있도록 변환해주는 loader
+          "sass-loader", // css 파일에서 sass 파일을 사용할 수 있도록 변환해주는 loader
           // 순서가 중요함!
         ],
       },
