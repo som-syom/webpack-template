@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   // parcel index.html
@@ -19,10 +20,26 @@ module.exports = {
   },
   // 참고 사이트 : https://webpack.js.org/configuration/output/#outputpath
 
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader", // html 에서 css 를 사용할 수 있도록 스타일 로더를 사용함
+          "css-loader", // js 파일에서 css 파일을 사용할 수 있도록 변환해주는 loader
+          // 순서가 중요함!
+        ],
+      },
+    ],
+  },
+
   // 번들링 후 결과물의 처리 방식 등 다양한 플러그인들을 설정
   plugins: [
     new HtmlPlugin({
       template: "./index.html",
+    }),
+    new CopyPlugin({
+      patterns: [{ from: "static" }],
     }),
   ],
 
