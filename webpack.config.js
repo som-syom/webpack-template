@@ -32,6 +32,10 @@ module.exports = {
           // 순서가 중요함!
         ],
       },
+      {
+        test: /\.js$/,
+        use: ["babel-loader"],
+      },
     ],
   },
 
